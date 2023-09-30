@@ -1,0 +1,153 @@
+body {
+    background-color: #E6E6E6;
+    font-family: Roboto, sans-serif;
+  }
+  
+  .containerx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+
+  }
+  .containerx .box {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  .containerx .box .top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .containerx .box .top #star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    left: 75%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.5s;
+    text-decoration: none;
+    z-index: 3;
+  }
+  .containerx .box .top #star:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+  .containerx .box .top #star:hover .ico {
+    color: #FFAE00;
+  }
+  .containerx .box .top #star .ico {
+    text-align: center;
+    font-size: 18px;
+    color: #626262;
+    transition: 0.5s;
+  }
+  .containerx .box .top .profile, .containerx .box .top .title, .containerx .box .top .job {
+    margin: 5px;
+  }
+  .containerx .box .top .profile {
+    width: 80px;
+    height: 80px;
+    border: 4px solid white;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 45%;
+    background-image: url("https://media.istockphoto.com/id/1280905178/vector/open-door-icon-door-frame-icon-entrance-symbol-door-way-pictogram-vector-eps-10-isolated-on.jpg?s=612x612&w=0&k=20&c=RjSAdZztwwpfXJYayzj47hDhg3L7qCHLehKF28XcvyY=");
+    z-index: 2;
+    background-size:contain;
+    background-repeat: no-repeat;
+  
+  }
+  .containerx .box .top .title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .containerx .box .top .job {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .containerx .box .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 50%;
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .containerx .box .bottom .links ul {
+    text-align: center;
+    list-style: none;
+  }
+  .containerx .box .bottom .links ul li {
+    padding: 5px;
+  }
+  .containerx .box .bottom .links ul a {
+    color: #626262;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .containerx .box .bottom .links ul a:hover {
+    text-decoration: underline;
+  }
+  .containerx .box .bottom .links ul .green {
+    color: #50E3B3;
+    font-size: 15px;
+    padding-right: 5px;
+  }
+  .containerx .box .bottom .social-links ul {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 60px;
+    list-style-type: none;
+
+  }
+  .containerx .box .bottom .social-links ul li {
+    padding: 10px;
+    font-size: 24px;
+  }
+  .containerx .box .bottom .social-links ul li a {
+    color: #626262;
+  }
+  .containerx .box .hover-box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s ease;
+    background-color: #FDF4DA;
+    border-radius: 10px;
+    opacity: 0;
+    z-index: -1;
+  }
+  .containerx .box .hover-box .text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    text-align: center;
+  }
+  .containerx .box .hover-box .text h1 {
+    color: #574A21;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 22px;
+  }

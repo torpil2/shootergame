@@ -1,0 +1,246 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Özel Oda</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="box.css">
+
+
+</head>
+<body>
+  <div class="container mx-auto justify-content-center mt-5 ">
+    <div class="card ">
+  <input type="text" class="input-group-text m-3" id="odaAdi" placeholder="Oda Adı">
+  <!-- <input type="text" class="input-group-text m-3" id="odasifre" placeholder="Oda Şifresi (Var İse)"> -->
+  
+  <button class="btn btn-success m-5" onclick="odaKatil()">Odaya Kur/Katıl</button>
+  <button class="btn btn-success m-5" onclick="TekOyuncu()">Bilgisayara Karşı Oyna</button>
+ 
+</div>
+
+</div>
+<div id="roombuttons">
+<button type="button" class="btn btn-secondary" onclick="dolumu()">Dolu Odaları Göster/Gizle</button>
+  <button type="button" class="btn btn-primary" onclick="liste()">Yenile</button>
+</div>
+<div id="roomlist">
+  <div id="rooms">
+    
+
+  </div>
+
+</div>
+
+
+
+ 
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script>
+ 
+let bos = 0;   
+
+function dolumu()
+{
+   if(bos == 0)
+   {
+    bos = 1;
+   }
+   else
+   {
+    bos = 0;
+   }
+   liste();
+}
+
+
+ 
+function odaKatil(){
+    var katilanoda = document.getElementById("odaAdi").value;
+// Belirli bir URL'ye yönlendirme yapma
+window.location.href = 'http://localhost:3000/room.html?oda='+katilanoda;
+
+}
+
+
+function TekOyuncu()
+{
+  window.location = "http://localhost:3000/tekoyuncu";
+}
+
+
+
+function liste()
+{
+
+
+var requestData = "deneme";
+fetch('/api/someendpoint', {
+
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+
+})
+  .then((response) => response.json())
+  .then((data) => {
+    // Handle the response data here
+    var dolu = Object.values(data);
+
+   
+    document.getElementById("rooms").innerHTML = "";
+    if(bos == 0)
+    {
+
+   var myArray = Object.keys(data);
+      myArray.forEach(element => {
+        console.log(element)
+        console.log(data[element].length)
+        if(data[element].length>3)
+        {
+          document.getElementById("rooms").innerHTML += `
+          <div class="containerx">
+      <div class="box">
+        <div class="hover-box">
+          <div class="text">
+           
+          </div>
+        </div>
+        <div class="top">
+        
+          <div class="profile"></div>
+        
+          <h1 class="title">Oda: ${element} </h1>
+      
+        </div>
+        <div class="bottom">
+          <div class="links">
+            <ul>
+            
+              <li><i class="fa-solid fa-users-rectangle"></i> 2/2</li>
+              <li><i class="fa-solid fa-user"></i> ${data[element][2]['kullanici']}</li>
+              <li><i class="fa-solid fa-user"></i> ${data[element][3]['kullanici']}</li>
+
+              <li> <a href="room.html?oda=${element}"><button class="btn btn-danger" disabled> KATIL   </button></a></li>
+            </ul>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+       `
+        }
+        else if(data[element].length=3)
+        {
+        
+          document.getElementById("rooms").innerHTML += `
+              <div class="containerx">
+      <div class="box">
+        <div class="hover-box">
+          <div class="text">
+            <h1>Bu kişiyi profesyonel listeme ekle</h1>
+          </div>
+        </div>
+        <div class="top">
+        
+          <div class="profile"></div>
+        
+          <h1 class="title">Oda: ${element} </h1>
+      
+        </div>
+        <div class="bottom">
+          <div class="links">
+            <ul>
+            
+              <li><i class="fa-solid fa-users-rectangle"></i> 1/2</li>
+              <li><i class="fa-solid fa-user"></i> ${data[element][2]['kullanici']}</li>
+              <li> <a href="room.html?oda=${element}"><button class="btn btn-success" > KATIL   </button></a></li>
+            </ul>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+       `
+        }
+      
+   
+      });
+    
+  }
+else
+{
+  var myArray = Object.keys(data);
+      myArray.forEach(element => {
+        console.log(element)
+        console.log(data[element].length)
+        if(data[element].length>3)
+        {
+          document.getElementById("rooms").innerHTML += ""
+        }
+        else if(data[element].length=3)
+        {
+        
+          document.getElementById("rooms").innerHTML += `
+              <div class="containerx">
+      <div class="box">
+        <div class="hover-box">
+          <div class="text">
+            <h1>Bu kişiyi profesyonel listeme ekle</h1>
+          </div>
+        </div>
+        <div class="top">
+        
+          <div class="profile"></div>
+        
+          <h1 class="title">Oda: ${element} </h1>
+      
+        </div>
+        <div class="bottom">
+          <div class="links">
+            <ul>
+            
+              <li><i class="fa-solid fa-users-rectangle"></i> 1/2</li>
+              <li><i class="fa-solid fa-user"></i> ${data[element][2]['kullanici']}</li>
+              <li> <a href="room.html?oda=${element}"><button class="btn btn-success" > KATIL   </button></a></li>
+            </ul>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+       `
+        }
+      
+   
+      });
+}
+
+})
+
+      
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+  </script>
+</body>
+</html>
+
+
+ <script type="text/javascript" src="socket.io/socket.io.js"></script>
+
+</body>
+</html>

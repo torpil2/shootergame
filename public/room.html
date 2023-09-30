@@ -1,0 +1,132 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title id="titlename">Özel Oda</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="buttons.css">
+  <link href="https://fonts.cdnfonts.com/css/press-start-2p" rel="stylesheet">
+
+</head>
+<body>
+ 
+
+  <ul id="katilanlar"></ul>
+ 
+
+  <!-- <input type="text" id="mesajInput" placeholder="Mesajınızı girin">
+<button onclick="mesajGonder()">Gönder</button> -->
+<div id="nav-bar">
+  <input id="nav-toggle" type="checkbox"/>
+  <div id="nav-header"><a id="nav-title">MyGame</a>
+    <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+    <hr/>
+  </div>
+  <div id="nav-content">
+    <div class="app" id="app"></div>
+    <hr/>
+    <div id="mesajlar"></div>
+    <div id="password">
+     
+
+    </div>
+   
+    <div id="nav-content-highlight"></div>
+  </div>
+  <input id="nav-footer-toggle" type="checkbox"/>
+  <div id="nav-footer">
+    <div id="nav-footer-heading">
+    
+    </div>
+    <div id="nav-footer-content">
+    
+    </div>
+  </div>
+</div>
+<div class="container mx-auto d-flex justify-content-center align-middle">
+  <label></label>
+  <div id="readydiv">
+
+
+  </div>
+</div>
+<div id="turnText" class="turnText" >10...</div>
+<div id="windText" > </div>
+<div id="ingamediv" style="filter: blur(0.5rem);"><!--BLUR EKLENCEK 0.5rem-->
+<div class="playerone" id="playerone">
+  <div id="playeronename"></div>
+
+  <div class="health-bar" data-total="1000" data-value="100">
+      
+      <div id="bar" class="bar">
+            <div class="hit"> </div>
+      </div>  
+    </div>
+  </div>
+
+
+  <div class="playertwo" id="playertwo">
+   <div id="playertwoname"></div>
+      <div class="health-bar2" data-total="1000" data-value="1000">
+        <div id="bar2" class="bar2">
+              <div class="hit"></div>
+        </div>
+      </div>
+  </div>
+<div class="container mx-auto" id="canvas-div">
+
+  <div id="GameBtns">
+    <!-- <button id="button" class="btn-Start_green stopBtnMe" onclick="getPowerValue()">Power</button> -->
+
+
+
+  </div>
+ 
+  <canvas width="1200" height="700"  id="canvas" >    
+   
+  </canvas>
+  <canvas width="1200" height="700"  id="canvas2" >    
+  </canvas>
+  <canvas width="1200" height="700"  id="canvas3" >    
+  </canvas>
+  
+<canvas width="1200" height="700"   id="canvas4" >   </canvas>
+<canvas width="1200" height="700"   id="canvas6" >   </canvas>
+
+</div>
+</div>
+<canvas  id="canvas5" >    
+</canvas>
+
+
+<div id="endgame-div">
+  <ul>
+    <li> <a id="endgame-text">KAZANAN</a></li>
+    <li> <a id="endgame-player">KAZANAN</a></li>
+    <li id="restartbutton" style="display: none;"> <button class="btn btn-info" onclick="restartGame()" >Yeniden Oyna</button> </li>
+  </ul>
+
+</div>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script>
+
+
+    
+
+
+  </script>
+
+
+ <script type="text/javascript" src="socket.io/socket.io.js"></script>
+
+ <script type="text/javascript" src="effect.js"></script>
+ <script type="text/javascript" src="code.js"></script>
+</body>
+</html>
